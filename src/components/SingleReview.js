@@ -1,20 +1,31 @@
-import { handlePatchVotes } from '../utils/api';
+import { fetchReviewById, handlePatchVotes } from '../utils/api';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const SingleReview = ({ reviews }) => {
-  const { review_id } = useParams();
+const SingleReview = ({ reviews, review_id }) => {
+  const [fullReview, setFullReview] = useState({});
+
+  // const { review_id } = useParams();
+  // console.log(reviews, review_id);
 
   const [selectedReview] = reviews.filter((review) => {
-    return review.review_id.toString() === review_id;
+    // console.log(review.review_id, review_id);
+    return review.review_id === review_id;
   });
+
+  useEffect(() => {
+    fetchReviewById(selectedReview.review_id).then((returnedReview) => {
+      setFullReview(returnedReview);
+    });
+  }, []);
+
+  console.log(fullReview);
+
   const [votes, setVotes] = useState(selectedReview.votes);
 
   return (
     <div>
-      <h3>{selectedReview.title}</h3>
-      <img src={selectedReview.review_img_url} className='review-images' />
-
+      <p>{fullReview.review.title}</p>
       <p
         onClick={() => {
           return handlePatchVotes(selectedReview.review_id, setVotes, votes);

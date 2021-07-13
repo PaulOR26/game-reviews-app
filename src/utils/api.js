@@ -8,6 +8,12 @@ export const fetchReviews = async () => {
   const { data } = await apiUrl.get('/reviews');
   return data.reviews;
 };
+export const fetchReviewById = async (review_id) => {
+  const { data } = await apiUrl.get(`/reviews/${review_id}`);
+  console.log(data.review.title);
+  return data;
+  // return data.reviews;
+};
 
 export const handlePatchVotes = async (review_id, setVotes, currVotes) => {
   setVotes(currVotes + 1);

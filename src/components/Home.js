@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { fetchReviews } from '../utils/api';
 import { handlePatchVotes } from '../utils/api';
 import Expandable from './Expandable';
+import SingleReview from './SingleReview';
 
 const Home = ({ reviews, setReviews }) => {
   useEffect(() => {
@@ -10,6 +11,7 @@ const Home = ({ reviews, setReviews }) => {
       setReviews(reviewsFromApi);
     });
   }, [setReviews]);
+  console.log(reviews);
   return (
     <div>
       <h2>Reviews:</h2>
@@ -18,18 +20,11 @@ const Home = ({ reviews, setReviews }) => {
         {reviews.map((singleReview) => {
           return (
             <li key={singleReview.review_id}>
-              <Link to={`/reviews/${singleReview.review_id}`}>
-                <h3>{singleReview.title}</h3>
-                <img
-                  src={singleReview.review_img_url}
-                  className='review-images'
+              <Expandable singleReview={singleReview}>
+                <SingleReview
+                  reviews={reviews}
+                  review_id={singleReview.review_id}
                 />
-              </Link>
-              Votes: {singleReview.votes}
-              <p>{singleReview.comment_count} comments</p>
-              <Expandable>
-                <p>testing</p>
-                <p>testing</p>
               </Expandable>
             </li>
           );
