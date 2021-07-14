@@ -6,10 +6,12 @@ const Expandable = ({ children, singleReview }) => {
   const toggleOpen = () => setIsOpen((currOpen) => !currOpen);
 
   return (
-    <div onClick={toggleOpen}>
-      <h3>{singleReview.title}</h3>
-      <img src={singleReview.review_img_url} className='review-images' />
-      <p>{isOpen ? 'Colapse' : 'Expand'}</p>
+    <div>
+      <div onClick={toggleOpen}>
+        <h3>{singleReview.title}</h3>
+        <img src={singleReview.review_img_url} className='review-images' />
+        <p>{isOpen ? 'Colapse' : 'Expand'}</p>
+      </div>
       {isOpen && children}
     </div>
   );

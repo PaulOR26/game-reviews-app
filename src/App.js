@@ -7,7 +7,7 @@ import SingleReview from './components/SingleReview';
 function App() {
   //NEEDS ACCESS:
   //Home | Post Review | Delete Review | Edit Review
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState();
 
   return (
     <BrowserRouter>
