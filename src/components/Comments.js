@@ -1,46 +1,63 @@
-import { handleSubmitComment } from '../utils/api';
 import { useState, useEffect } from 'react';
 import { fetchCommentsByReviewId } from '../utils/api';
 import Loader from 'react-loader-spinner';
 import { handlePatchComments } from '../utils/api';
+import Likes from './Likes';
+import CommentsForm from './CommentsForm';
 
-const Comments = ({ review_id }) => {
-  const [comments, setComments] = useState();
-  const [commentVotes, setCommentVotes] = useState();
+const Comments = ({
+  review_id,
+  commentVotes,
+  setCommentVotes,
+  comment_count,
+}) => {
+  const [comments, setComments] = useState([]);
+  const [commentVotesChange, setCommentVotesChange] = useState({});
+  const [newComment, setNewComment] = useState('');
+  const [commentsLength, setCommentsLength] = useState(comment_count);
+
+  console.log('infinite?');
 
   useEffect(() => {
     fetchCommentsByReviewId(review_id).then((commentsFromApi) => {
       setComments(commentsFromApi);
+      setCommentVotesChange((currentState) => {
+        const newObject = { currentState };
+        return comments.forEach((comment) => {
+          newObject[comment.comment_id] = comment.votes;
+        });
+      });
     });
-  }, [setComments]);
-  console.log(comments);
+  }, [commentsLength]);
+
+  console.log(comments.length);
+  //   console.log(commentVotesChange, comments, 'HERE');
+  //   console.log(comments);
+
+  //   setCommentVotes(() => {
+  //     return { ...commentVotes, comment_id: comment.votes };
+  //   });
+
   if (comments) {
     return (
       <div>
-        <form onSubmit={handleSubmitComment}>
-          <label htmlFor='comment-box'>Leave a comment</label>
-          <input id='comment-box' placeholder='Your comment here...'></input>
-          <button type='submit'>Submit</button>
-        </form>
+        <CommentsForm
+          newComment={newComment}
+          setNewComment={setNewComment}
+          review_id={review_id}
+          commentsLength={commentsLength}
+          setCommentsLength={setCommentsLength}
+        />
         <ul>
-          {comments.map((comment) => {
+          {comments.map((comment, index) => {
             return (
               <li key={comment.comment_id}>
                 <p>{comment.body}</p>
-                <p>Votes:</p>
-                <p>{commentVotes}</p>
-                <p
-                  onClick={() => {
-                    setCommentVotes(commentVotes + 1);
-                    return handlePatchComments(
-                      comment.comment_id,
-                      setCommentVotes,
-                      commentVotes
-                    );
-                  }}
-                >
-                  Like
-                </p>
+                <p>Likes:</p>
+                <Likes
+                  currLikes={comment.votes}
+                  commentId={comment.comment_id}
+                />
                 <p>User:</p>
                 <p>{comment.author}</p>
                 <p>Created:</p>

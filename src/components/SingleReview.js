@@ -7,6 +7,7 @@ import Comments from './Comments';
 
 const SingleReview = ({ reviews, review_id, votes, setVotes }) => {
   const [fullReview, setFullReview] = useState();
+  const [commentVotes, setCommentVotes] = useState({});
   const [selectedReview] = reviews.filter((review) => {
     return review.review_id === review_id;
   });
@@ -32,7 +33,12 @@ const SingleReview = ({ reviews, review_id, votes, setVotes }) => {
           Like
         </p>
         <ExpandableComments commentCount={selectedReview.comment_count}>
-          <Comments review_id={selectedReview.review_id} />
+          <Comments
+            review_id={selectedReview.review_id}
+            commentVotes={commentVotes}
+            setCommentVotes={setCommentVotes}
+            comment_count={selectedReview.comment_count}
+          />
         </ExpandableComments>
       </div>
     );
