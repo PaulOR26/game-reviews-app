@@ -1,5 +1,5 @@
 import Loader from 'react-loader-spinner';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchReviews } from '../utils/api';
 import { handlePatchVotes } from '../utils/api';
@@ -7,12 +7,15 @@ import Expandable from './Expandable';
 import SingleReview from './SingleReview';
 
 const Home = ({ reviews, setReviews }) => {
+  const [selectedReview, setSelectedReview] = useState();
+  const [votes, setVotes] = useState();
+
   useEffect(() => {
     fetchReviews().then((reviewsFromApi) => {
       setReviews(reviewsFromApi);
     });
   }, [setReviews]);
-  console.log(reviews);
+  // console.log(reviews);
   if (reviews) {
     return (
       <div>
@@ -21,10 +24,17 @@ const Home = ({ reviews, setReviews }) => {
           {reviews.map((singleReview) => {
             return (
               <li key={singleReview.review_id}>
-                <Expandable singleReview={singleReview}>
+                <Expandable
+                  singleReview={singleReview}
+                  selectedReview={selectedReview}
+                  setSelectedReview={setSelectedReview}
+                  setVotes={setVotes}
+                >
                   <SingleReview
                     reviews={reviews}
                     review_id={singleReview.review_id}
+                    votes={votes}
+                    setVotes={setVotes}
                   />
                 </Expandable>
               </li>
