@@ -81,3 +81,8 @@ export const fetchUserAvatars = async (username) => {
   const { data } = await apiUrl.get(`/users/${username}`);
   return data.user;
 };
+
+export const fetchCategories = async () => {
+  const { data } = await apiUrl.get(`/categories`);
+  return data.categories;
+};

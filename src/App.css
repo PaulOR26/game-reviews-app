@@ -41,6 +41,25 @@
 
   margin-bottom: 10px;
 }
+
+.nav-user {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-user img {
+  height: 25px;
+  margin-left: 2px;
+  margin-right: 5px;
+}
+
+.nav-user p {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
 .nav-element {
   margin: 0;
   margin-left: 20px;

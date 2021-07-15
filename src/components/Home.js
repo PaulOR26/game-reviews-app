@@ -3,7 +3,7 @@ import { fetchReviews } from '../utils/api';
 import ExpandableReviews from './ExpandableReviews';
 import SingleReview from './SingleReview';
 import Loading from './Loading';
-import { useContext } from 'react';
+import SelectCategory from './SelectCategory';
 
 const Home = () => {
   const [reviews, setReviews] = useState();
@@ -23,6 +23,7 @@ const Home = () => {
     return (
       <div className='home-component'>
         <h1>Game Reviews</h1>
+        <SelectCategory />
         <ul>
           {reviews.map((singleReview) => {
             return (
