@@ -7,7 +7,7 @@ import ExpandableUsers from './components/ExpandableUsers';
 import Users from './components/Users';
 
 function App() {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState('Not logged in');
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

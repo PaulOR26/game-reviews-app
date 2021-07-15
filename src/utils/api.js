@@ -34,12 +34,15 @@ export const handleSubmitComment = async (
   newComment,
   commentsLength,
   setCommentsLength,
-  setPostedComment
+  setPostedComment,
+  sortThis,
+  username
 ) => {
   setPostedComment(`You have posted: ${newComment}`);
+  console.log(username);
   try {
     await apiUrl.post(`/reviews/${review_id}/comments`, {
-      username: 'cooljmessy',
+      username: username,
       body: newComment,
     });
     setCommentsLength(commentsLength + 1);
@@ -69,4 +72,12 @@ export const handlePatchCommentLikes = async (
   }
 };
 
-export const handleFetchUsers = async () => {};
+export const fetchUsers = async () => {
+  const { data } = await apiUrl.get('/users');
+  return data.users;
+};
+
+export const fetchUserAvatars = async (username) => {
+  const { data } = await apiUrl.get(`/users/${username}`);
+  return data.user;
+};

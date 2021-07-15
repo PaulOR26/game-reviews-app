@@ -12,7 +12,7 @@ const ExpandableUsers = ({ children }) => {
     <div className='nav-expandable'>
       <div onClick={toggleOpen} className='nav-element-container'>
         <p className='nav-element'>Login/Change User</p>
-        <p className='nav-element'>{user}</p>
+        <p className='nav-element'>{user.name}</p>
       </div>
       {isOpen && children}
     </div>

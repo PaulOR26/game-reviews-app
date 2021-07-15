@@ -1,6 +1,8 @@
 import { preventDefault } from '../utils/api';
 import { handleSubmitComment } from '../utils/api';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
 
 const CommentsForm = ({
   newComment,
@@ -11,7 +13,8 @@ const CommentsForm = ({
   setCommentCounter,
 }) => {
   const [postedComment, setPostedComment] = useState('');
-
+  const { user } = useContext(UserContext);
+  console.log(user);
   return (
     <form onSubmit={preventDefault} className='login-form'>
       <label htmlFor='comment-box'>Leave a comment</label>
@@ -30,7 +33,8 @@ const CommentsForm = ({
             commentsLength,
             setCommentsLength,
             setPostedComment,
-            setCommentCounter
+            setCommentCounter,
+            user.username
           );
         }}
       >

@@ -56,6 +56,31 @@
   background-color: #810e14;
 }
 
+.user-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+
+  width: 90%;
+}
+
+.user-details {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #810e1448;
+  margin: 10px;
+}
+
+.user-details:hover {
+  border-style: double;
+  background-color: #0e811d48;
+  cursor: pointer;
+}
+
 .home-component {
   margin: 0;
   /* background-color: #eefeff63; */
