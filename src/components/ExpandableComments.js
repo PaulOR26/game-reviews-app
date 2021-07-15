@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const ExpandableComments = ({ children, commentCount }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -6,10 +6,10 @@ const ExpandableComments = ({ children, commentCount }) => {
   const toggleOpen = () => setIsOpen((currOpen) => !currOpen);
 
   return (
-    <div>
-      <div onClick={toggleOpen}>
+    <div className='whole-expand-section'>
+      <div onClick={toggleOpen} className='comments-expand-section'>
         <p>Comments: {commentCount}</p>
-        <p>{isOpen ? 'Collapse' : 'Expand'}</p>
+        <p className='expand-icon'>{isOpen ? '↕️' : '↕️'}</p>
       </div>
       {isOpen && children}
     </div>

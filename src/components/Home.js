@@ -1,34 +1,35 @@
-import Loader from 'react-loader-spinner';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { fetchReviews } from '../utils/api';
-import { handlePatchVotes } from '../utils/api';
-import Expandable from './Expandable';
+import ExpandableReviews from './ExpandableReviews';
 import SingleReview from './SingleReview';
+import Loading from './Loading';
 
-const Home = ({ reviews, setReviews }) => {
+const Home = () => {
+  const [reviews, setReviews] = useState();
   const [selectedReview, setSelectedReview] = useState();
   const [votes, setVotes] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchReviews().then((reviewsFromApi) => {
       setReviews(reviewsFromApi);
+      setIsLoading(false);
     });
   }, [setReviews]);
-  // console.log(reviews);
-  if (reviews) {
+
+  if (isLoading) return <Loading />;
+  else {
     return (
-      <div>
-        ;<h2>Reviews:</h2>
+      <div className='home-component'>
+        <h1>Game Reviews</h1>
         <ul>
           {reviews.map((singleReview) => {
             return (
-              <li key={singleReview.review_id}>
-                <Expandable
+              <li key={singleReview.review_id} className='review-box'>
+                <ExpandableReviews
                   singleReview={singleReview}
                   selectedReview={selectedReview}
                   setSelectedReview={setSelectedReview}
-                  setVotes={setVotes}
                 >
                   <SingleReview
                     reviews={reviews}
@@ -36,23 +37,14 @@ const Home = ({ reviews, setReviews }) => {
                     votes={votes}
                     setVotes={setVotes}
                   />
-                </Expandable>
+                </ExpandableReviews>
               </li>
             );
           })}
         </ul>
       </div>
     );
-  } else
-    return (
-      <Loader
-        type='Circles'
-        color='#008000'
-        height={100}
-        width={100}
-        visible='true'
-      />
-    );
+  }
 };
 
 export default Home;

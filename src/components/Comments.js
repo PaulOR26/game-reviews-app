@@ -1,44 +1,24 @@
 import { useState, useEffect } from 'react';
 import { fetchCommentsByReviewId } from '../utils/api';
-import Loader from 'react-loader-spinner';
-import { handlePatchComments } from '../utils/api';
+import Loading from './Loading';
 import Likes from './Likes';
 import CommentsForm from './CommentsForm';
 
-const Comments = ({
-  review_id,
-  commentVotes,
-  setCommentVotes,
-  comment_count,
-}) => {
+const Comments = ({ review_id, comment_count }) => {
   const [comments, setComments] = useState([]);
-  const [commentVotesChange, setCommentVotesChange] = useState({});
   const [newComment, setNewComment] = useState('');
   const [commentsLength, setCommentsLength] = useState(comment_count);
-
-  console.log('infinite?');
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchCommentsByReviewId(review_id).then((commentsFromApi) => {
       setComments(commentsFromApi);
-      setCommentVotesChange((currentState) => {
-        const newObject = { currentState };
-        return comments.forEach((comment) => {
-          newObject[comment.comment_id] = comment.votes;
-        });
-      });
+      setIsLoading(false);
     });
   }, [commentsLength]);
 
-  console.log(comments.length);
-  //   console.log(commentVotesChange, comments, 'HERE');
-  //   console.log(comments);
-
-  //   setCommentVotes(() => {
-  //     return { ...commentVotes, comment_id: comment.votes };
-  //   });
-
-  if (comments) {
+  if (isLoading) return <Loading />;
+  else {
     return (
       <div>
         <CommentsForm
@@ -49,7 +29,7 @@ const Comments = ({
           setCommentsLength={setCommentsLength}
         />
         <ul>
-          {comments.map((comment, index) => {
+          {comments.map((comment) => {
             return (
               <li key={comment.comment_id}>
                 <p>{comment.body}</p>
@@ -68,16 +48,7 @@ const Comments = ({
         </ul>
       </div>
     );
-  } else
-    return (
-      <Loader
-        type='Circles'
-        color='#008000'
-        height={100}
-        width={100}
-        visible='true'
-      />
-    );
+  }
 };
 
 export default Comments;

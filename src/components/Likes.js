@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { handlePatchComments } from '../utils/api';
+import { handlePatchCommentLikes } from '../utils/api';
 
 const Likes = ({ currLikes, commentId }) => {
   const [currentLikes, setCurrentLikes] = useState(currLikes);
@@ -9,8 +9,11 @@ const Likes = ({ currLikes, commentId }) => {
       <p
         onClick={() => {
           setCurrentLikes(currentLikes + 1);
-          // setCommentVotes(commentVotes + 1);
-          return handlePatchComments(commentId);
+          return handlePatchCommentLikes(
+            commentId,
+            currentLikes,
+            setCurrentLikes
+          );
         }}
       >
         Like
