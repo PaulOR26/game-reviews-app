@@ -33,9 +33,11 @@ const Comments = ({ review_id, comment_count }) => {
             return (
               <li className='individual-comments' key={comment.comment_id}>
                 <p className='comment-body'>{comment.body}</p>
-                <p>
-                  By {comment.author} {comment.created_at}
-                </p>
+                <div className='author-details'>
+                  <p>By</p>
+                  <p className='author-name'>{comment.author}</p>
+                  <p>{comment.created_at}</p>
+                </div>
                 <Likes
                   currLikes={comment.votes}
                   commentId={comment.comment_id}

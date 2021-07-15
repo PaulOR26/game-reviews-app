@@ -13,6 +13,7 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
+    setIsLoading(true);
     fetchReviews(selectedCategory).then((reviewsFromApi) => {
       setReviews(reviewsFromApi);
       setIsLoading(false);

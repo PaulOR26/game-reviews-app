@@ -28,9 +28,13 @@ const SingleReview = ({ reviews, review_id, votes, setVotes }) => {
     return (
       <div className='expanded-review'>
         <p>{fullReview.review.review_body}</p>
-        <p>
-          By {fullReview.review.owner} {fullReview.review.created_at}
-        </p>
+
+        <div className='author-details'>
+          <p>By</p>
+          <p className='author-name'>{fullReview.review.owner}</p>
+          <p>{fullReview.review.created_at}</p>
+        </div>
+
         <div className='likes-section'>
           <p>Likes: {votes}</p>
           <p

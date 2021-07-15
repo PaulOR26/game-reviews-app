@@ -370,6 +370,21 @@ li {
   margin: 10px;
 }
 
+.author-details {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+.author-details p {
+  margin: 3px;
+}
+
+.author-name {
+  color: navy;
+  font-weight: bolder;
+}
+
 @media only screen and (min-width: 600px) {
   .review-expand-section {
     flex-direction: row;
