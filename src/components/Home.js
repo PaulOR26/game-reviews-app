@@ -3,6 +3,7 @@ import { fetchReviews } from '../utils/api';
 import ExpandableReviews from './ExpandableReviews';
 import SingleReview from './SingleReview';
 import Loading from './Loading';
+import { useContext } from 'react';
 
 const Home = () => {
   const [reviews, setReviews] = useState();

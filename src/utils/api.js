@@ -68,3 +68,5 @@ export const handlePatchCommentLikes = async (
     setCurrentLikes(currentLikes - 1);
   }
 };
+
+export const handleFetchUsers = async () => {};
