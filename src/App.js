@@ -1,13 +1,12 @@
 import './App.css';
-import Home from './components/Home';
 import { useState } from 'react';
 import { UserContext } from './contexts/UserContext';
-import { useContext } from 'react';
-import ExpandableUsers from './components/ExpandableUsers';
+import Home from './components/Home';
 import Users from './components/Users';
+import ExpandableUsers from './components/ExpandableUsers';
 
 function App() {
-  const [user, setUser] = useState('Not logged in');
+  const [user, setUser] = useState({ name: 'Not logged in' });
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

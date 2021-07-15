@@ -1,14 +1,9 @@
-const ExpandableReviews = ({
-  children,
-  singleReview,
-  selectedReview,
-  setSelectedReview,
-}) => {
-  const toggleOpen = () => {
-    if (singleReview.review_id === selectedReview) {
-      setSelectedReview();
-    } else setSelectedReview(singleReview.review_id);
-  };
+import { useState } from 'react';
+
+const ExpandableReviews = ({ children, singleReview }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpen = () => setIsOpen((currOpen) => !currOpen);
 
   return (
     <div className='whole-expand-section'>
@@ -22,11 +17,9 @@ const ExpandableReviews = ({
           />
           <p>{singleReview.category}</p>
         </div>
-        <p className='expand-icon'>
-          {selectedReview === singleReview.review_id ? '↕️' : '↕️'}
-        </p>
+        <p className='expand-icon'>↕️</p>
       </div>
-      {selectedReview === singleReview.review_id && children}
+      {isOpen && children}
     </div>
   );
 };

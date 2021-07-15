@@ -14,7 +14,7 @@ export const fetchReviews = async (selectedCategory) => {
 export const fetchReviewById = async (review_id) => {
   const { data } = await apiUrl.get(`/reviews/${review_id}`);
 
-  return data;
+  return data.review;
 };
 
 export const handlePatchVotes = async (review_id, setVotes, currVotes) => {
@@ -32,23 +32,22 @@ export const preventDefault = async (event) => {
 };
 
 export const handleSubmitComment = async (
+  username,
   review_id,
   newComment,
-  commentsLength,
-  setCommentsLength,
-  setPostedComment,
-  sortThis,
-  username
+  commentCount,
+  setCommentCount,
+  setPostedComment
 ) => {
   setPostedComment(`You have posted: ${newComment}`);
-  console.log(username);
+
   try {
     await apiUrl.post(`/reviews/${review_id}/comments`, {
       username: username,
       body: newComment,
     });
-    setCommentsLength(commentsLength + 1);
-    console.log(commentsLength + 1);
+
+    setCommentCount(commentCount + 1);
   } catch (err) {
     setPostedComment('Failed to post comment');
   }

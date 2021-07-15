@@ -1,22 +1,19 @@
-import { useState, useEffect } from 'react';
-import { fetchUsers } from '../utils/api';
-import { fetchUserAvatars } from '../utils/api';
-import Loading from './Loading';
-import { useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
+import { fetchUsers, fetchUserAvatars } from '../utils/api';
+import Loading from './Loading';
 
 const Users = () => {
+  const { setUser } = useContext(UserContext);
   const [userDetails, setUserDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { setUser } = useContext(UserContext);
 
   useEffect(() => {
     fetchUsers().then((usernamesFromApi) => {
-      usernamesFromApi.map((user) => {
+      usernamesFromApi.forEach((user) => {
         fetchUserAvatars(user.username).then((returnedUser) => {
           setUserDetails((currentState) => {
-            console.log(currentState, returnedUser);
-            const newUserArray = [
+            return [
               ...currentState,
               {
                 name: returnedUser.name,
@@ -24,13 +21,12 @@ const Users = () => {
                 avatar: returnedUser.avatar_url,
               },
             ];
-            return newUserArray;
           });
           setIsLoading(false);
         });
       });
     });
-  }, [setUserDetails]);
+  }, []);
   if (isLoading) return <Loading />;
   return (
     <ul className='user-list'>
@@ -46,7 +42,7 @@ const Users = () => {
             <p>{user.name}</p>
             <img
               className='review-images'
-              alt='image unavailable'
+              alt='unavailable'
               src={user.avatar}
             />
             <p>{user.username}</p>

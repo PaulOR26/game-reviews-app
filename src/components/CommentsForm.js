@@ -4,17 +4,12 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
 
-const CommentsForm = ({
-  newComment,
-  setNewComment,
-  review_id,
-  commentsLength,
-  setCommentsLength,
-  setCommentCounter,
-}) => {
-  const [postedComment, setPostedComment] = useState('');
+const CommentsForm = ({ review_id, commentCount, setCommentCount }) => {
   const { user } = useContext(UserContext);
-  console.log(user);
+
+  const [newComment, setNewComment] = useState('');
+  const [postedComment, setPostedComment] = useState('');
+
   return (
     <form onSubmit={preventDefault} className='login-form'>
       <label htmlFor='comment-box'>Leave a comment</label>
@@ -28,13 +23,12 @@ const CommentsForm = ({
         type='submit'
         onClick={() => {
           handleSubmitComment(
+            user.username,
             review_id,
             newComment,
-            commentsLength,
-            setCommentsLength,
-            setPostedComment,
-            setCommentCounter,
-            user.username
+            commentCount,
+            setCommentCount,
+            setPostedComment
           );
         }}
       >

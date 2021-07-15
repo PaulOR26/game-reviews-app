@@ -14,7 +14,7 @@ const ExpandableUsers = ({ children }) => {
         <p className='nav-element'>Login/Change User</p>
         <div className='nav-user'>
           <p className='nav-element'>{user.name}</p>
-          <img src={user.avatar} className='nav-element' />
+          <img src={user.avatar} alt={user.username} className='nav-element' />
         </div>
       </div>
       {isOpen && children}

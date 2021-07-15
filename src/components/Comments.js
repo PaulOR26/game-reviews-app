@@ -4,10 +4,8 @@ import Loading from './Loading';
 import Likes from './Likes';
 import CommentsForm from './CommentsForm';
 
-const Comments = ({ review_id, comment_count }) => {
+const Comments = ({ review_id, commentCount, setCommentCount }) => {
   const [comments, setComments] = useState([]);
-  const [newComment, setNewComment] = useState('');
-  const [commentsLength, setCommentsLength] = useState(comment_count);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -15,18 +13,16 @@ const Comments = ({ review_id, comment_count }) => {
       setComments(commentsFromApi);
       setIsLoading(false);
     });
-  }, [commentsLength]);
+  }, [commentCount]);
 
   if (isLoading) return <Loading />;
   else {
     return (
       <div>
         <CommentsForm
-          newComment={newComment}
-          setNewComment={setNewComment}
           review_id={review_id}
-          commentsLength={commentsLength}
-          setCommentsLength={setCommentsLength}
+          commentCount={commentCount}
+          setCommentCount={setCommentCount}
         />
         <ul>
           {comments.map((comment) => {

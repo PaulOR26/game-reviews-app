@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import Loading from './Loading';
 import { fetchCategories } from '../utils/api';
+import Loading from './Loading';
 
 const SelectCategory = ({ setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);

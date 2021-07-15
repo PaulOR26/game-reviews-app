@@ -1,25 +1,20 @@
-import ExpandableComments from './ExpandableComments';
 import { fetchReviewById, handlePatchVotes } from '../utils/api';
 import { useState, useEffect } from 'react';
+import ExpandableComments from './ExpandableComments';
 import Comments from './Comments';
 import Loading from './Loading';
 
-const SingleReview = ({ reviews, review_id, votes, setVotes }) => {
-  const [fullReview, setFullReview] = useState();
-  const [commentVotes, setCommentVotes] = useState({});
+const SingleReview = ({ singleReview }) => {
+  const [votes, setVotes] = useState();
+  const [reviewWithBody, setReviewWithBody] = useState();
+  const [commentCount, setCommentCount] = useState(singleReview.comment_count);
   const [isLoading, setIsLoading] = useState(true);
-  const [commentCounter, setCommentCounter] = useState();
-
-  const [selectedReview] = reviews.filter((review) => {
-    return review.review_id === review_id;
-  });
 
   useEffect(() => {
-    fetchReviewById(selectedReview.review_id).then((returnedReview) => {
-      setFullReview(returnedReview);
-      setVotes(returnedReview.review.votes);
+    fetchReviewById(singleReview.review_id).then((returnedReview) => {
+      setReviewWithBody(returnedReview);
+      setVotes(returnedReview.votes);
       setIsLoading(false);
-      setCommentCounter(returnedReview.review.comment_count);
     });
   }, []);
 
@@ -27,12 +22,12 @@ const SingleReview = ({ reviews, review_id, votes, setVotes }) => {
   else {
     return (
       <div className='expanded-review'>
-        <p>{fullReview.review.review_body}</p>
+        <p>{reviewWithBody.review_body}</p>
 
         <div className='author-details'>
           <p>By</p>
-          <p className='author-name'>{fullReview.review.owner}</p>
-          <p>{fullReview.review.created_at}</p>
+          <p className='author-name'>{reviewWithBody.owner}</p>
+          <p>{reviewWithBody.created_at}</p>
         </div>
 
         <div className='likes-section'>
@@ -42,9 +37,9 @@ const SingleReview = ({ reviews, review_id, votes, setVotes }) => {
             onClick={() => {
               setVotes(votes + 1);
               return handlePatchVotes(
-                selectedReview.review_id,
+                singleReview.review_id,
                 setVotes,
-                votes
+                reviewWithBody.votes
               );
             }}
           >
@@ -52,10 +47,11 @@ const SingleReview = ({ reviews, review_id, votes, setVotes }) => {
           </p>
         </div>
 
-        <ExpandableComments commentCounter={commentCounter}>
+        <ExpandableComments commentCount={commentCount}>
           <Comments
-            review_id={selectedReview.review_id}
-            commentVotes={commentVotes}
+            review_id={singleReview.review_id}
+            commentCount={commentCount}
+            setCommentCount={setCommentCount}
           />
         </ExpandableComments>
       </div>
