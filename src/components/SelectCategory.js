@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Loading from './Loading';
 import { fetchCategories } from '../utils/api';
 
-const SelectCategory = () => {
+const SelectCategory = ({ setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -16,10 +16,18 @@ const SelectCategory = () => {
   if (isLoading) return <Loading />;
   else {
     return (
-      <select>
-        <option>Select Category</option>
+      <select
+        onChange={(event) => {
+          setSelectedCategory(event.target.value);
+        }}
+      >
+        <option value=''>Select Category</option>
         {categories.map((category) => {
-          return <option>{category.slug}</option>;
+          return (
+            <option key={category.slug} value={category.slug}>
+              {category.slug}
+            </option>
+          );
         })}
       </select>
     );

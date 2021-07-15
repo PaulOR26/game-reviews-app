@@ -4,8 +4,10 @@ const apiUrl = axios.create({
   baseURL: 'https://game-reviews-project.herokuapp.com/api',
 });
 
-export const fetchReviews = async () => {
-  const { data } = await apiUrl.get('/reviews');
+export const fetchReviews = async (selectedCategory) => {
+  let path = `/reviews`;
+  if (selectedCategory) path += `/?category=${selectedCategory}`;
+  const { data } = await apiUrl.get(path);
   return data.reviews;
 };
 

@@ -10,20 +10,21 @@ const Home = () => {
   const [selectedReview, setSelectedReview] = useState();
   const [votes, setVotes] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState('');
 
   useEffect(() => {
-    fetchReviews().then((reviewsFromApi) => {
+    fetchReviews(selectedCategory).then((reviewsFromApi) => {
       setReviews(reviewsFromApi);
       setIsLoading(false);
     });
-  }, [setReviews]);
+  }, [selectedCategory]);
 
   if (isLoading) return <Loading />;
   else {
     return (
       <div className='home-component'>
         <h1>Game Reviews</h1>
-        <SelectCategory />
+        <SelectCategory setSelectedCategory={setSelectedCategory} />
         <ul>
           {reviews.map((singleReview) => {
             return (
