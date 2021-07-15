@@ -31,17 +31,15 @@ const Comments = ({ review_id, comment_count }) => {
         <ul>
           {comments.map((comment) => {
             return (
-              <li key={comment.comment_id}>
-                <p>{comment.body}</p>
-                <p>Likes:</p>
+              <li className='individual-comments' key={comment.comment_id}>
+                <p className='comment-body'>{comment.body}</p>
+                <p>
+                  By {comment.author} {comment.created_at}
+                </p>
                 <Likes
                   currLikes={comment.votes}
                   commentId={comment.comment_id}
                 />
-                <p>User:</p>
-                <p>{comment.author}</p>
-                <p>Created:</p>
-                <p>{comment.created_at}</p>
               </li>
             );
           })}

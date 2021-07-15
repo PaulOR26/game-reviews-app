@@ -38,13 +38,12 @@ export const handleSubmitComment = async (
 ) => {
   setPostedComment(`You have posted: ${newComment}`);
   try {
-    console.log(newComment);
-    console.log(`/reviews/${review_id}/comments`);
     await apiUrl.post(`/reviews/${review_id}/comments`, {
       username: 'cooljmessy',
       body: newComment,
     });
     setCommentsLength(commentsLength + 1);
+    console.log(commentsLength + 1);
   } catch (err) {
     setPostedComment('Failed to post comment');
   }

@@ -8,17 +8,19 @@ const CommentsForm = ({
   review_id,
   commentsLength,
   setCommentsLength,
+  setCommentCounter,
 }) => {
   const [postedComment, setPostedComment] = useState('');
 
   return (
-    <form onSubmit={preventDefault}>
+    <form onSubmit={preventDefault} className='login-form'>
       <label htmlFor='comment-box'>Leave a comment</label>
-      <input
+      <textarea
         id='comment-box'
         placeholder='Your comment here...'
+        type='text'
         onChange={(event) => setNewComment(event.target.value)}
-      ></input>
+      ></textarea>
       <button
         type='submit'
         onClick={() => {
@@ -27,7 +29,8 @@ const CommentsForm = ({
             newComment,
             commentsLength,
             setCommentsLength,
-            setPostedComment
+            setPostedComment,
+            setCommentCounter
           );
         }}
       >

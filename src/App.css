@@ -78,13 +78,15 @@ h1 {
   justify-content: center;
   padding-top: 15px;
   padding-bottom: 15px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 
   /* box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .review-expand-section {
+  border-style: groove;
+  border-width: 0.5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,11 +95,12 @@ h1 {
   /* border-radius: 25%;
   border-radius: 28px; */
   background: linear-gradient(225deg, #d6e6d779, #ffffff);
-  box-shadow: -28px 28px 55px #e0f0e1, 28px -28px 55px #fcfffd;
+  box-shadow: 0px 7px 20px #e0f0e1, 0px -7px 20px #fcfffd;
 }
 
 .review-expand-section:hover {
   border-style: double;
+  border-width: 4px;
   border-color: #810e14;
   cursor: pointer;
   /* background: rgb(0, 0, 0);
@@ -134,15 +137,16 @@ h1 {
 
 .review-images {
   width: 120px;
-  height: auto;
+  height: 100px;
+
   margin-left: 10px;
   margin-right: 10px;
   border-style: inset;
-  transition-duration: 0.3s;
+  transition-duration: 0.2s;
 }
 .review-images:hover {
   width: 140px;
-  height: auto;
+  height: 120px;
 }
 
 .image-category {
@@ -153,9 +157,9 @@ h1 {
 }
 
 .image-category p {
-  color: #810e14;
+  color: #5e090e;
   border-style: groove;
-  background-color: cyan;
+  background-color: rgba(238, 255, 0, 0.171);
   padding: 5px;
 }
 
@@ -167,7 +171,7 @@ h1 {
 }
 
 .expand-icon {
-  font-size: 40px;
+  font-size: 30px;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -179,6 +183,7 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  padding-bottom: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -203,12 +208,20 @@ li {
   align-items: center;
   background-color: coral;
   width: 100%;
-  background: linear-gradient(225deg, #d6e6d779, #ffffff);
-  box-shadow: -28px 28px 55px #e0f0e1, 28px -28px 55px #fcfffd;
+  height: 50px;
+  background: rgb(246, 246, 246);
+  background: linear-gradient(
+    180deg,
+    rgba(246, 246, 246, 0.514) 0%,
+    rgba(250, 255, 210, 0.521) 50%,
+    rgba(255, 255, 255, 0.591) 100%
+  );
+  box-shadow: 0px 14px 25px #e0f0e1, 0px -14px 25px #fcfffd;
 }
 .comments-expand-section:hover {
+  cursor: pointer;
   border-style: double;
-  border-color: #810e14;
+  border-color: #dfd800;
 }
 .likes-section {
   display: flex;
@@ -223,15 +236,76 @@ li {
 }
 
 .likebtn {
+  padding: 5px;
+  margin: 5px;
   border-style: outset;
   background-color: rgba(0, 255, 255, 0.219);
+  transition-duration: 0.2s;
 }
 
 .likebtn:hover {
+  transform: translateY(-2px);
   cursor: pointer;
+  background-color: rgba(0, 255, 255, 0.507);
 }
 .likebtn:active {
   border-style: inset;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-form label {
+  margin: 10px;
+  text-decoration: underline;
+}
+.login-form textarea {
+  margin: 10px;
+  size: 500;
+  width: 260px;
+  height: 50px;
+}
+.login-form button {
+  margin: 10px;
+  padding: 5px;
+
+  border-style: outset;
+  background-color: rgba(0, 255, 55, 0.219);
+  transition-duration: 0.2s;
+}
+
+.login-form button:hover {
+  cursor: pointer;
+
+  transform: translateY(-2px);
+  cursor: pointer;
+  background-color: rgba(0, 255, 55, 0.637);
+}
+.login-form button:active {
+  border-style: inset;
+}
+
+.individual-comments {
+  background-color: #7230342a;
+  margin: 10px;
+  width: 90%;
+}
+.comment-body {
+  background-color: #72303441;
+  padding: 5px;
+}
+
+.like-component {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.like-component p {
+  margin: 10px;
 }
 
 @media only screen and (min-width: 600px) {
@@ -242,6 +316,9 @@ li {
     flex-direction: row;
   }
   .image-category {
+    flex-direction: row;
+  }
+  .login-form {
     flex-direction: row;
   }
 }
