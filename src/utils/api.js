@@ -27,13 +27,19 @@ export const fetchReviewById = async (review_id) => {
   return data.review;
 };
 
-export const handlePatchVotes = async (review_id, setVotes, currVotes) => {
+export const handlePatchVotes = async (
+  review_id,
+  setVotes,
+  currVotes,
+  setIsDisabled
+) => {
   try {
     await apiUrl.patch(`/reviews/${review_id}`, {
       inc_votes: 1,
     });
   } catch (err) {
     setVotes(currVotes);
+    setIsDisabled(false);
   }
 };
 
@@ -72,14 +78,16 @@ export const fetchCommentsByReviewId = async (review_id) => {
 export const handlePatchCommentLikes = async (
   comment_id,
   currentLikes,
-  setCurrentLikes
+  setCurrentLikes,
+  setIsDisabled
 ) => {
   try {
     await apiUrl.patch(`/comments/${comment_id}`, {
       inc_votes: 1,
     });
   } catch (err) {
-    setCurrentLikes(currentLikes - 1);
+    setCurrentLikes(currentLikes);
+    setIsDisabled(false);
   }
 };
 

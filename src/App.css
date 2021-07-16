@@ -352,20 +352,35 @@ li {
 }
 
 .likebtn {
+  background: url('./images/like.png');
+  background-size: 100%;
+  background-repeat: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
   padding: 5px;
   margin: 5px;
+  border-width: 1px;
+  border-radius: 50%;
   border-style: outset;
-  background-color: rgba(0, 255, 255, 0.219);
   transition-duration: 0.2s;
 }
 
 .likebtn:hover {
   transform: translateY(-2px);
   cursor: pointer;
-  background-color: rgba(0, 255, 255, 0.507);
+  /* border-color: navy; */
 }
 .likebtn:active {
   border-style: inset;
+}
+
+.likebtn:disabled {
+  transform: none;
+  filter: grayscale();
+}
+
+.testing {
 }
 
 .login-form {

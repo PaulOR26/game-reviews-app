@@ -8,6 +8,7 @@ const SingleReview = ({ singleReview }) => {
   const [votes, setVotes] = useState();
   const [reviewWithBody, setReviewWithBody] = useState();
   const [commentCount, setCommentCount] = useState(singleReview.comment_count);
+  const [isDisabled, setIsDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,19 +33,20 @@ const SingleReview = ({ singleReview }) => {
 
         <div className='likes-section'>
           <p>Likes: {votes}</p>
-          <p
+          <button
             className='likebtn'
+            disabled={isDisabled}
             onClick={() => {
+              setIsDisabled(true);
               setVotes(votes + 1);
               return handlePatchVotes(
                 singleReview.review_id,
                 setVotes,
-                reviewWithBody.votes
+                reviewWithBody.votes,
+                setIsDisabled
               );
             }}
-          >
-            Like
-          </p>
+          ></button>
         </div>
 
         <ExpandableComments commentCount={commentCount}>

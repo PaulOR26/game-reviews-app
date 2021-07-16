@@ -3,22 +3,24 @@ import { handlePatchCommentLikes } from '../utils/api';
 
 const Likes = ({ currLikes, commentId }) => {
   const [currentLikes, setCurrentLikes] = useState(currLikes);
+  const [isDisabled, setIsDisabled] = useState(false);
   return (
     <div className='like-component'>
       <p>Likes: {currentLikes}</p>
-      <p
+      <button
         className='likebtn'
+        disabled={isDisabled}
         onClick={() => {
+          setIsDisabled(true);
           setCurrentLikes(currentLikes + 1);
           return handlePatchCommentLikes(
             commentId,
             currentLikes,
-            setCurrentLikes
+            setCurrentLikes,
+            setIsDisabled
           );
         }}
-      >
-        Like
-      </p>
+      ></button>
     </div>
   );
 };
