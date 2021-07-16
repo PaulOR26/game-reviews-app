@@ -9,7 +9,7 @@ const SortBy = ({ selectedSortBy, setSelectedSortBy, setOrderBy }) => {
           setSelectedSortBy(event.target.value);
         }}
       >
-        <option value=''>Sort By {selectedSortBy}</option>
+        <option value=''>Sort By: {selectedSortBy}</option>
         <option value='Title'>Title</option>
         <option value='Written By'>Written By</option>
         <option value='Date'>Date</option>
