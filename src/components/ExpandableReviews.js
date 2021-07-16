@@ -8,7 +8,10 @@ const ExpandableReviews = ({ children, singleReview }) => {
   return (
     <div className='whole-expand-section'>
       <div onClick={toggleOpen} className='review-expand-section'>
-        <h3 className='review-title'>{singleReview.title}</h3>
+        <div className='review-title'>
+          <h3>{singleReview.title}</h3>
+          <p>{singleReview.owner}</p>
+        </div>
         <div className='image-category'>
           <img
             src={singleReview.review_img_url}

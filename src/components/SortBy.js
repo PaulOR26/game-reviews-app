@@ -1,13 +1,35 @@
-const SortBy = () => {
+import sortup from '../images/sortup.png';
+import sortdown from '../images/sortdown.png';
+
+const SortBy = ({ selectedSortBy, setSelectedSortBy, setOrderBy }) => {
   return (
-    <select>
-      <option>Sort</option>
-      <option>Title</option>
-      <option>Written By</option>
-      <option>Date</option>
-      <option>Likes</option>
-      <option>Comment Count</option>
-    </select>
+    <div className='sortby'>
+      <select
+        onChange={(event) => {
+          setSelectedSortBy(event.target.value);
+        }}
+      >
+        <option value=''>Sort By {selectedSortBy}</option>
+        <option value='Title'>Title</option>
+        <option value='Written By'>Written By</option>
+        <option value='Date'>Date</option>
+        <option value='Popular'>Popular</option>
+      </select>
+      <img
+        src={sortup}
+        alt='Sort ascending'
+        onClick={() => {
+          setOrderBy('asc');
+        }}
+      />
+      <img
+        src={sortdown}
+        alt='Sort descending'
+        onClick={() => {
+          setOrderBy('desc');
+        }}
+      />
+    </div>
   );
 };
 

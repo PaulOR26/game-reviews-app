@@ -4,9 +4,19 @@ const apiUrl = axios.create({
   baseURL: 'https://game-reviews-project.herokuapp.com/api',
 });
 
-export const fetchReviews = async (selectedCategory) => {
-  let path = `/reviews`;
-  if (selectedCategory) path += `/?category=${selectedCategory}`;
+export const fetchReviews = async (
+  selectedCategory,
+  selectedSortBy,
+  orderBy
+) => {
+  let altSortBy = 'created_at';
+  if (selectedSortBy === 'Title') altSortBy = 'title';
+  if (selectedSortBy === 'Written By') altSortBy = 'owner';
+  if (selectedSortBy === 'Date') altSortBy = 'created_at';
+  if (selectedSortBy === 'Popular') altSortBy = 'votes';
+
+  let path = `/reviews?sort_by=${altSortBy}&order=${orderBy}`;
+  if (selectedCategory) path += `&category=${selectedCategory}`;
   const { data } = await apiUrl.get(path);
   return data.reviews;
 };

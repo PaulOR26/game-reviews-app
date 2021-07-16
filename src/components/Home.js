@@ -10,15 +10,19 @@ import Loading from './Loading';
 const Home = () => {
   const [reviews, setReviews] = useState();
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedSortBy, setSelectedSortBy] = useState('Date');
+  const [orderBy, setOrderBy] = useState('desc');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
-    fetchReviews(selectedCategory).then((reviewsFromApi) => {
-      setReviews(reviewsFromApi);
-      setIsLoading(false);
-    });
-  }, [selectedCategory]);
+    fetchReviews(selectedCategory, selectedSortBy, orderBy).then(
+      (reviewsFromApi) => {
+        setReviews(reviewsFromApi);
+        setIsLoading(false);
+      }
+    );
+  }, [selectedCategory, selectedSortBy, orderBy]);
 
   if (isLoading) return <Loading />;
   else {
@@ -27,8 +31,13 @@ const Home = () => {
         <h1>Game Reviews</h1>
         <div className='home-filters'>
           <SelectCategory setSelectedCategory={setSelectedCategory} />
-          <SortBy />
+          <SortBy
+            selectedSortBy={selectedSortBy}
+            setSelectedSortBy={setSelectedSortBy}
+            setOrderBy={setOrderBy}
+          />
         </div>
+        <h2>Showing {selectedCategory || 'all'} games</h2>
         <ul>
           {reviews.map((singleReview) => {
             return (
