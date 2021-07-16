@@ -2,6 +2,7 @@ import { fetchReviewById, handlePatchVotes } from '../utils/api';
 import { useState, useEffect } from 'react';
 import ExpandableComments from './ExpandableComments';
 import Comments from './Comments';
+import dateFormat from 'dateformat';
 import Loading from './Loading';
 
 const SingleReview = ({ singleReview }) => {
@@ -28,7 +29,14 @@ const SingleReview = ({ singleReview }) => {
         <div className='author-details'>
           <p>By</p>
           <p className='author-name'>{reviewWithBody.owner}</p>
-          <p>{reviewWithBody.created_at}</p>
+          <p>
+            {' '}
+            -{' '}
+            {dateFormat(
+              reviewWithBody.created_at,
+              'dddd, mmmm dS, yyyy, h:MM:ss TT'
+            )}
+          </p>
         </div>
 
         <div className='likes-section'>

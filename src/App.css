@@ -211,6 +211,7 @@ h2 {
   border-width: 4px;
   border-color: #810e14;
   cursor: pointer;
+  margin: -3px;
   /* background: rgb(0, 0, 0);
   background: radial-gradient(
     circle,
@@ -338,6 +339,7 @@ li {
   cursor: pointer;
   border-style: double;
   border-color: #dfd800;
+  margin: -3px;
 }
 .likes-section {
   display: flex;
@@ -378,9 +380,6 @@ li {
 .likebtn:disabled {
   transform: none;
   filter: grayscale();
-}
-
-.testing {
 }
 
 .login-form {
