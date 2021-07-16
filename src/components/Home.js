@@ -3,6 +3,8 @@ import { fetchReviews } from '../utils/api';
 import ExpandableReviews from './ExpandableReviews';
 import SingleReview from './SingleReview';
 import SelectCategory from './SelectCategory';
+import SortBy from './SortBy';
+
 import Loading from './Loading';
 
 const Home = () => {
@@ -23,7 +25,10 @@ const Home = () => {
     return (
       <div className='home-component'>
         <h1>Game Reviews</h1>
-        <SelectCategory setSelectedCategory={setSelectedCategory} />
+        <div className='home-filters'>
+          <SelectCategory setSelectedCategory={setSelectedCategory} />
+          <SortBy />
+        </div>
         <ul>
           {reviews.map((singleReview) => {
             return (
