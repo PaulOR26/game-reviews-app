@@ -161,6 +161,11 @@ h2 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 5px;
+}
+
+.home-filters select {
+  margin: 5px;
 }
 
 .sortby {
@@ -168,20 +173,24 @@ h2 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin: 5px;
+}
+.sort-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  height: 20px;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 .sortby img {
-  height: 15px;
+  height: 12px;
   background-color: rgb(255, 202, 110);
   margin: 2px;
   padding: 2px;
-  border-style: solid;
-  border-width: 0.2px;
-}
-
-.sortby img:hover {
-  height: 18px;
-  border-color: orangered;
 }
 
 .whole-expand-section {
@@ -206,13 +215,6 @@ h2 {
   padding-bottom: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
-}
-
-.home-component select {
-  margin: 5px;
-}
-.home-component select:hover {
-  border-color: orangered;
 }
 
 .review-expand-section {

@@ -40,6 +40,7 @@ const Home = ({
             selectedSortBy={selectedSortBy}
             setSelectedSortBy={setSelectedSortBy}
             setOrderBy={setOrderBy}
+            orderBy={orderBy}
           />
         </div>
         <h2>Showing {selectedCategory || 'all'} games</h2>
