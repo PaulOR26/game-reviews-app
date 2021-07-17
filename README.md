@@ -1,4 +1,4 @@
-# Game Reviews API
+# Game Reviews Website
 
 ## Description
 
