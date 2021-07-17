@@ -24,18 +24,13 @@ const SingleReview = ({ singleReview }) => {
   else {
     return (
       <div className='expanded-review'>
-        <p>{reviewWithBody.review_body}</p>
+        <button className='review-page'>Review Page</button>
+
+        <p className='review-body'>{reviewWithBody.review_body}</p>
 
         <div className='author-details'>
-          <p>By</p>
-          <p className='author-name'>{reviewWithBody.owner}</p>
           <p>
-            {' '}
-            -{' '}
-            {dateFormat(
-              reviewWithBody.created_at,
-              'dddd, mmmm dS, yyyy, h:MM:ss TT'
-            )}
+            {dateFormat(reviewWithBody.created_at, 'mmmm dS, yyyy, h:MM:ss TT')}
           </p>
         </div>
 

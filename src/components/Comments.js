@@ -14,7 +14,7 @@ const Comments = ({ review_id, commentCount, setCommentCount }) => {
       setComments(commentsFromApi);
       setIsLoading(false);
     });
-  }, [commentCount]);
+  }, []);
 
   if (isLoading) return <Loading />;
   else {
@@ -24,6 +24,7 @@ const Comments = ({ review_id, commentCount, setCommentCount }) => {
           review_id={review_id}
           commentCount={commentCount}
           setCommentCount={setCommentCount}
+          setComments={setComments}
         />
         <ul>
           {comments.map((comment) => {
@@ -38,7 +39,7 @@ const Comments = ({ review_id, commentCount, setCommentCount }) => {
                     -{' '}
                     {dateFormat(
                       comment.created_at,
-                      'dddd, mmmm dS, yyyy, h:MM:ss TT'
+                      'mmmm dS, yyyy, h:MM:ss TT'
                     )}
                   </p>
                 </div>

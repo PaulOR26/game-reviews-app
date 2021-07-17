@@ -27,19 +27,15 @@
   background-color: #29335ca5;
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
   width: 90%;
-
   border-color: #c2f970;
   color: #c2f970;
-
   border-radius: 60px;
   border-style: solid;
   border-width: 1px;
-
   transition-duration: 0.2s;
   text-align: center;
   font-size: 18px;
   padding: 5px;
-
   margin-bottom: 10px;
 }
 
@@ -81,7 +77,6 @@
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
-
   width: 90%;
 }
 
@@ -90,7 +85,6 @@
   flex-flow: column;
   justify-content: center;
   align-items: center;
-
   background-color: #810e1448;
   margin: 10px;
 }
@@ -103,8 +97,6 @@
 
 .home-component {
   margin: 0;
-  /* background-color: #eefeff63; */
-  /* box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19); */
   width: 95%;
   display: flex;
   flex-direction: column;
@@ -131,7 +123,6 @@ h2 {
   font-size: 15px;
   letter-spacing: 2px;
   text-transform: none;
-  /* background-color: rgba(206, 206, 206, 0.74); */
 }
 
 .home-filters {
@@ -150,7 +141,6 @@ h2 {
 
 .sortby img {
   height: 15px;
-  /* width: 15px; */
   background-color: rgb(255, 202, 110);
   margin: 2px;
   padding: 2px;
@@ -171,7 +161,6 @@ h2 {
   align-items: center;
 }
 .review-box {
-  /* background-color: #eeffef63; */
   margin: 0;
   display: flex;
   width: 100%;
@@ -182,8 +171,6 @@ h2 {
   padding-bottom: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
-
-  /* box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19); */
 }
 
 .home-component select {
@@ -201,8 +188,6 @@ h2 {
   justify-content: center;
   align-items: center;
   width: 95%;
-  /* border-radius: 25%;
-  border-radius: 28px; */
   background: linear-gradient(225deg, #d6e6d779, #ffffff);
   box-shadow: 0px 7px 20px #e0f0e1, 0px -7px 20px #fcfffd;
 }
@@ -213,15 +198,6 @@ h2 {
   border-color: #810e14;
   cursor: pointer;
   margin: -3px;
-  /* background: rgb(0, 0, 0);
-  background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0.4351648351648352) 0%,
-    rgba(255, 255, 255, 0.09010989010989012) 25%,
-    rgba(10, 1, 1, 0.02197802197802201) 50%,
-    rgba(255, 255, 255, 0) 65%,
-    rgba(255, 255, 255, 0.53125) 100%
-  ); */
 }
 
 .review-title {
@@ -230,19 +206,13 @@ h2 {
   margin: 5px;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.603);
+  color: rgba(255, 255, 255, 0.529);
   font-weight: 500;
   font-size: 21px;
   text-shadow: 2px 2px #000000ef;
   text-align: center;
   width: 95%;
-  /* border-radius: 10px; */
-  /* margin: 15px; */
   padding: 5px;
-
-  border-radius: 28px;
-  background: #e6d8d882;
-  box-shadow: inset -28px 28px 55px #d9cccc79, inset 28px -28px 55px #ffffff79;
 }
 .review-title p,
 .review-title h3 {
@@ -251,7 +221,7 @@ h2 {
 }
 .review-title p {
   font-size: 18px;
-  text-shadow: 2px 2px #030035ef;
+  text-shadow: 2px 2px #050068ef;
 }
 
 .review-images {
@@ -314,9 +284,28 @@ li {
 
 .expanded-review {
   width: 95%;
-  /* border-style: groove; */
-  /* border-radius: 10%; */
   background-color: rgba(222, 222, 222, 0.486);
+}
+.review-body {
+  font-weight: bolder;
+  margin: 5px;
+}
+
+.review-page {
+  margin: 10px;
+  padding: 5px;
+  font-size: 18px;
+  border-style: outset;
+}
+.review-page:hover {
+  border-style: inset;
+  background-color: rgba(255, 166, 0, 0.16);
+}
+.review-page:active {
+  border-style: groove;
+  background-color: rgba(0, 0, 128, 0.096);
+  box-shadow: 0 6px 8px 0 rgba(158, 115, 115, 0.068),
+    0 8px 15px 0 rgba(0, 0, 0, 0.055);
 }
 
 .comments-expand-section {
@@ -341,6 +330,10 @@ li {
   border-style: double;
   border-color: #dfd800;
   margin: -3px;
+}
+.comments-expand-section p {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 .likes-section {
   display: flex;
@@ -372,7 +365,6 @@ li {
 .likebtn:hover {
   transform: translateY(-2px);
   cursor: pointer;
-  /* border-color: navy; */
 }
 .likebtn:active {
   border-style: inset;
@@ -389,6 +381,16 @@ li {
   justify-content: center;
   align-items: center;
 }
+.login-form p {
+  margin: 5px;
+}
+.submit-comment-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .login-form label {
   margin: 10px;
   text-decoration: underline;
@@ -464,7 +466,7 @@ li {
   .image-category {
     flex-direction: row;
   }
-  .login-form {
+  .submit-comment-section {
     flex-direction: row;
   }
 }
