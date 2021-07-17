@@ -3,7 +3,7 @@ import { UserContext } from '../contexts/UserContext';
 import { fetchUsers, fetchUserAvatars } from '../utils/api';
 import Loading from './Loading';
 
-const Users = () => {
+const Users = ({ setUsersIsOpen }) => {
   const { setUser } = useContext(UserContext);
   const [userDetails, setUserDetails] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +37,7 @@ const Users = () => {
             className='user-details'
             onClick={() => {
               setUser(user);
+              setUsersIsOpen(false);
             }}
           >
             <p>{user.name}</p>

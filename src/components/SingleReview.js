@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { fetchReviewById, handlePatchVotes } from '../utils/api';
 import { useState, useEffect } from 'react';
 import ExpandableComments from './ExpandableComments';
@@ -5,9 +6,14 @@ import Comments from './Comments';
 import dateFormat from 'dateformat';
 import Loading from './Loading';
 
-const SingleReview = ({ singleReview }) => {
+const SingleReview = ({
+  singleReview,
+  reviewWithBody,
+  setReviewWithBody,
+  onReviewPage,
+  setOnReviewPage,
+}) => {
   const [votes, setVotes] = useState();
-  const [reviewWithBody, setReviewWithBody] = useState();
   const [commentCount, setCommentCount] = useState(singleReview.comment_count);
   const [isDisabled, setIsDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,9 +28,28 @@ const SingleReview = ({ singleReview }) => {
 
   if (isLoading) return <Loading />;
   else {
+    let buttonText;
+    let linkPath;
+    if (onReviewPage) {
+      buttonText = 'All Reviews';
+      linkPath = '/';
+    } else {
+      buttonText = 'Review Page';
+      linkPath = `/reviews/${reviewWithBody.review_id}`;
+    }
+
     return (
       <div className='expanded-review'>
-        <button className='review-page'>Review Page</button>
+        <div className='router-link'>
+          <Link
+            to={linkPath}
+            onClick={() => {
+              return setOnReviewPage((currState) => !currState);
+            }}
+          >
+            <button className='review-page-btn'>{buttonText}</button>
+          </Link>
+        </div>
 
         <p className='review-body'>{reviewWithBody.review_body}</p>
 

@@ -23,7 +23,6 @@ export const fetchReviews = async (
 
 export const fetchReviewById = async (review_id) => {
   const { data } = await apiUrl.get(`/reviews/${review_id}`);
-
   return data.review;
 };
 
@@ -53,7 +52,8 @@ export const handleSubmitComment = async (
   newComment,
   commentCount,
   setCommentCount,
-  setPostedComment
+  setPostedComment,
+  setComments
 ) => {
   setPostedComment(`You have posted: ${newComment}`);
 
@@ -66,6 +66,11 @@ export const handleSubmitComment = async (
     setCommentCount(commentCount + 1);
   } catch (err) {
     setPostedComment('Failed to post comment');
+    setComments((currState) => {
+      const newCommentsState = [...currState];
+      newCommentsState.shift();
+      return newCommentsState;
+    });
   }
 };
 

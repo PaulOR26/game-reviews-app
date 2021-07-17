@@ -10,6 +10,37 @@
   align-items: center;
 }
 
+.router-link {
+  text-decoration: none;
+}
+.router-error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.router-link button {
+  margin: 10px;
+  padding: 5px;
+  font-size: 18px;
+  border-style: outset;
+}
+
+.router-link button:hover {
+  cursor: pointer;
+  border-style: inset;
+  background-color: rgba(255, 166, 0, 0.16);
+}
+
+.router-link button:active {
+  border-style: groove;
+  background-color: rgba(0, 0, 128, 0.096);
+  box-shadow: 0 6px 8px 0 rgba(158, 115, 115, 0.068),
+    0 8px 15px 0 rgba(0, 0, 0, 0.055);
+}
+
 .nav-expandable {
   margin-top: 10px;
   width: 90%;
@@ -26,7 +57,7 @@
   align-items: center;
   background-color: #29335ca5;
   box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.24), 0 9px 25px 0 rgba(0, 0, 0, 0.19);
-  width: 90%;
+  width: 100%;
   border-color: #c2f970;
   color: #c2f970;
   border-radius: 60px;
@@ -160,6 +191,10 @@ h2 {
   justify-content: center;
   align-items: center;
 }
+.review-page {
+  width: 90%;
+  text-align: center;
+}
 .review-box {
   margin: 0;
   display: flex;
@@ -250,6 +285,7 @@ h2 {
   background-color: rgba(238, 255, 0, 0.171);
   padding: 5px;
   margin: 5px;
+  width: 100px;
 }
 
 .singleReview {
@@ -289,23 +325,6 @@ li {
 .review-body {
   font-weight: bolder;
   margin: 5px;
-}
-
-.review-page {
-  margin: 10px;
-  padding: 5px;
-  font-size: 18px;
-  border-style: outset;
-}
-.review-page:hover {
-  border-style: inset;
-  background-color: rgba(255, 166, 0, 0.16);
-}
-.review-page:active {
-  border-style: groove;
-  background-color: rgba(0, 0, 128, 0.096);
-  box-shadow: 0 6px 8px 0 rgba(158, 115, 115, 0.068),
-    0 8px 15px 0 rgba(0, 0, 0, 0.055);
 }
 
 .comments-expand-section {
@@ -411,8 +430,6 @@ li {
 }
 
 .login-form button:hover {
-  cursor: pointer;
-
   transform: translateY(-2px);
   cursor: pointer;
   background-color: rgba(0, 255, 55, 0.637);

@@ -1,9 +1,17 @@
 import { useState } from 'react';
 
-const ExpandableReviews = ({ children, singleReview }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const ExpandableReviews = ({
+  children,
+  singleReview,
+  openClose = false,
+  setOnReviewPage,
+  isOnReviewPage,
+}) => {
+  const [isOpen, setIsOpen] = useState(openClose);
 
-  const toggleOpen = () => setIsOpen((currOpen) => !currOpen);
+  const toggleOpen = () => {
+    setIsOpen((currOpen) => !currOpen);
+  };
 
   return (
     <div className='whole-expand-section'>

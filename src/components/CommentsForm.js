@@ -3,6 +3,7 @@ import { handleSubmitComment } from '../utils/api';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { UserContext } from '../contexts/UserContext';
+import { useAlert } from 'react-alert';
 
 const CommentsForm = ({
   review_id,
@@ -10,8 +11,9 @@ const CommentsForm = ({
   setCommentCount,
   setComments,
 }) => {
-  const { user } = useContext(UserContext);
+  const alert = useAlert();
 
+  const { user } = useContext(UserContext);
   const [newComment, setNewComment] = useState('');
   const [postedComment, setPostedComment] = useState('');
 
@@ -28,33 +30,33 @@ const CommentsForm = ({
         <button
           type='submit'
           onClick={() => {
-            // console.log(newComment, currState)
-            setComments((currState) => {
-              console.log({
-                author: user.username,
-                body: newComment,
-                comment_id: 73,
-                votes: 0,
+            if (newComment === '')
+              alert.show(
+                'Please enter something into the comment field before posting'
+              );
+            else {
+              setComments((currState) => {
+                return [
+                  {
+                    author: user.username,
+                    body: newComment,
+                    comment_id: 'new',
+                    created_at: new Date(),
+                    votes: 0,
+                  },
+                  ...currState,
+                ];
               });
-              return [
-                {
-                  author: user.username,
-                  body: newComment,
-                  comment_id: 'new',
-                  created_at: new Date(),
-                  votes: 0,
-                },
-                ...currState,
-              ];
-            });
-            handleSubmitComment(
-              user.username,
-              review_id,
-              newComment,
-              commentCount,
-              setCommentCount,
-              setPostedComment
-            );
+              handleSubmitComment(
+                user.username,
+                review_id,
+                newComment,
+                commentCount,
+                setCommentCount,
+                setPostedComment,
+                setComments
+              );
+            }
           }}
         >
           Submit

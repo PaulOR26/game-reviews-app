@@ -7,7 +7,12 @@ import SortBy from './SortBy';
 
 import Loading from './Loading';
 
-const Home = () => {
+const Home = ({
+  reviewWithBody,
+  setReviewWithBody,
+  onReviewPage,
+  setOnReviewPage,
+}) => {
   const [reviews, setReviews] = useState();
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedSortBy, setSelectedSortBy] = useState('Date');
@@ -42,8 +47,19 @@ const Home = () => {
           {reviews.map((singleReview) => {
             return (
               <li key={singleReview.review_id} className='review-box'>
-                <ExpandableReviews singleReview={singleReview}>
-                  <SingleReview singleReview={singleReview} />
+                <ExpandableReviews
+                  singleReview={singleReview}
+                  openClose={false}
+                  setOnReviewPage={setOnReviewPage}
+                  isOnReviewPage={false}
+                >
+                  <SingleReview
+                    singleReview={singleReview}
+                    reviewWithBody={reviewWithBody}
+                    setReviewWithBody={setReviewWithBody}
+                    onReviewPage={onReviewPage}
+                    setOnReviewPage={setOnReviewPage}
+                  />
                 </ExpandableReviews>
               </li>
             );
