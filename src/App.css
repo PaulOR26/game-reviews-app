@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .router-link {
@@ -78,9 +79,10 @@
 }
 
 .nav-user img {
+  width: 25px;
   height: 25px;
-  margin-left: 2px;
-  margin-right: 5px;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 .nav-user p {
@@ -187,6 +189,7 @@ h2 {
 }
 
 .sortby img {
+  width: 8px;
   height: 12px;
   background-color: rgb(255, 202, 110);
   margin: 2px;
