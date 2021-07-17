@@ -6,15 +6,15 @@ This project was to build a website using the API I had created in June to conso
 
 The website contains game reviews and promotes social interaction through likes, comments and user selection. Each review has a specific URL allowing users to share them, and the site includes functionality for filtering and sorting reviews for ease of use.
 
-The site is designed to provide a fluid browsing experience and allows users to continuously scroll through reviews, read information about them, like and comment, all without needing to navigate to different pages. This was made possible by using expandable components, and it encourages users to engage with the site for longer and provide more content.
+The site is designed to provide a fluid browsing experience and allows users to continuously scroll through reviews, read information about them, like and comment, without needing to navigate to different pages if they choose not to. This was made possible by using expandable components, and it encourages users to engage with the site for longer and provide more content.
 
 I built the website using React and made use of react hooks to provide the functionality.
 
-[Click here to view the hosted website.](https://game-reviews-app.netlify.app/)
+[Click here to view the hosted website.](https://game-reviews-app.netlify.app/){target="\_blank"}
 
-[Click here to view the back-end repo.](https://github.com/PaulOR26/game-reviews-project)
+[Click here to view the back-end repo.](https://github.com/PaulOR26/game-reviews-project){target="\_blank"}
 
-[Click here to view the hosted API.](https://game-reviews-project.herokuapp.com/api)
+[Click here to view the hosted API.](https://game-reviews-project.herokuapp.com/api){target="\_blank"}
 (You may need to install a 'JSON formatter' browser extension in order to view the detail in a readable format.)
 
 ## Setup
@@ -27,6 +27,9 @@ I built the website using React and made use of react hooks to provide the funct
 
 - **Install** dependencies  
   `npm install`
+
+- **Deploy** website  
+  `npm start`
 
 ## Requirements
 
