@@ -10,11 +10,11 @@ The site is designed to provide a fluid browsing experience and allows users to 
 
 I built the website using React and made use of react hooks to provide the functionality.
 
-[Click here to view the hosted website.](https://game-reviews-app.netlify.app/){target="\_blank"}
+[Click here to view the hosted website.](https://game-reviews-app.netlify.app/)
 
-[Click here to view the back-end repo.](https://github.com/PaulOR26/game-reviews-project){target="\_blank"}
+[Click here to view the back-end repo.](https://github.com/PaulOR26/game-reviews-project)
 
-[Click here to view the hosted API.](https://game-reviews-project.herokuapp.com/api){target="\_blank"}
+[Click here to view the hosted API.](https://game-reviews-project.herokuapp.com/api)
 (You may need to install a 'JSON formatter' browser extension in order to view the detail in a readable format.)
 
 ## Setup
