@@ -13,7 +13,7 @@ const SortBy = ({ selectedSortBy, setSelectedSortBy, setOrderBy, orderBy }) => {
         <option value='Title'>Title</option>
         <option value='Written By'>Written By</option>
         <option value='Date'>Date</option>
-        <option value='Popular'>Popular</option>
+        <option value='Popular'>Popularity</option>
       </select>
       <button
         className='sort-btn'
