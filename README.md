@@ -28,7 +28,7 @@ I built the website using React and made use of react hooks to provide the funct
 - **Install** dependencies  
   `npm install`
 
-- **Deploy** website  
+- **Run** in browser  
   `npm start`
 
 ## Requirements
